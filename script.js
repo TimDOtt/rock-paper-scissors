@@ -3,8 +3,22 @@ const choices = ["rock", "paper", "scissors"];
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * choices.length); 
     let computerChoice = choices[choice];
-    let capitalized = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
-    console.log(capitalized); 
+    return computerChoice;
 }
 
-getComputerChoice();
+function playGame(playerSelection, computerSelection) {
+    playerSelection.toLowerCase();
+    if (playerSelection === "rock" && computerSelection === "scissors"){
+        return "You win! Rock beats scissors!";
+    }
+    else if (playerSelection === "rock" && computerSelection === "paper"){
+        return "You lose! Paper beats rock";
+    }
+    else {
+        return "It's a tie!!";
+    }
+}
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playGame(playerSelection, computerSelection));
