@@ -1,36 +1,77 @@
-const choices = ["rock", "paper", "scissors"];
+const CHOICES = ["rock", "paper", "scissors"];
+const btn = document.querySelectorAll('button');
+let value = btn.value;
+let playerWins = 0;
+let computerWins = 0;
+
+btn.forEach((button) => {
+    button.addEventListener('click', () => {
+        value = button.value;
+        playRound();
+    });
+});
 
 function getComputerChoice() {
-    let choice = Math.floor(Math.random() * choices.length); 
-    let computerChoice = choices[choice];
+    let choice = Math.floor(Math.random() * CHOICES.length); 
+    let computerChoice = CHOICES[choice];
     console.log("Computer selection is: " + computerChoice);
     return computerChoice;
 }
 
 function playRound() {
-    let playerSelection = prompt("Choose rock, paper, or scissors :");
+    let playerSelection = value;
     let computerSelection = getComputerChoice();
-    console.log("Player selection is: " + playerSelection.toLowerCase());
-    if (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors"){
-        return "You win! Rock beats scissors.";
+
+    
+
+    if (playerSelection === "rock" && computerSelection === "scissors"){
+        document.querySelector('#result').textContent = "You win! Rock beats scissors.";
+        playerWins += 1;
+        document.querySelector('#playerWins').textContent = "Player wins: " + playerWins;
+        
     }
-    else if (playerSelection.toLowerCase() === "rock" && computerSelection === "paper"){
-        return "You lose! Paper beats rock.";
+    else if (playerSelection === "rock" && computerSelection === "paper"){
+        document.querySelector('#result').textContent = "You lose! Paper beats rock.";
+        computerWins += 1;
+        document.querySelector('#computerWins').textContent = "Computer wins: " + computerWins;
     }
-    else if (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors"){
-        return "You lose! Scissors beats paper.";
+    else if (playerSelection === "paper" && computerSelection === "scissors"){
+        document.querySelector('#result').textContent = "You lose! Scissors beats paper.";
+        computerWins += 1;
+        document.querySelector('#computerWins').textContent = "Computer wins: " + computerWins;
+        
     }
-    else if (playerSelection.toLowerCase() === "paper" && computerSelection === "rock"){
-        return "You win! Paper beats rock.";
+    else if (playerSelection === "paper" && computerSelection === "rock"){
+        document.querySelector('#result').textContent = "You win! Paper beats rock.";
+        playerWins += 1;
+        document.querySelector('#playerWins').textContent = "Player wins: " + playerWins;
     }
-    else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "rock"){
-        return "You lose! Rock beats scissors.";
+    else if (playerSelection === "scissors" && computerSelection === "rock"){
+        document.querySelector('#result').textContent = "You lose! Rock beats scissors.";
+        computerWins += 1;
+        document.querySelector('#computerWins').textContent = "Computer wins: " + computerWins;
     }
-    else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper"){
-        return "You win! Scissors beats paper.";
+    else if (playerSelection === "scissors" && computerSelection === "paper"){
+        document.querySelector('#result').textContent = "You win! Scissors beats paper.";
+        playerWins += 1;
+        document.querySelector('#playerWins').textContent = "Player wins: " + playerWins;
     }
     else {
-        return "It's a tie!!";
+        document.querySelector('#result').textContent = "It's a tie!!";
+    }
+
+    if (playerWins === 5) {
+        document.querySelector('#finalResult').textContent = "Player wins! Game has reset.";
+        playerWins = 0;
+        computerWins = 0;
+        document.querySelector('#computerWins').textContent = "Computer wins: 0";
+        document.querySelector('#playerWins').textContent = "Player wins: 0";
+    }else if (computerWins ===5) {
+        document.querySelector('#finalResult').textContent = "Computer wins! Game has reset.";
+        playerWins = 0;
+        computerWins = 0;
+        document.querySelector('#playerWins').textContent = "Player wins: 0";
+        document.querySelector('#computerWins').textContent = "Computer wins: 0";
     }
 }
 
@@ -65,4 +106,4 @@ function playGame() {
     }
 }
 
-playGame();
+// playGame();
