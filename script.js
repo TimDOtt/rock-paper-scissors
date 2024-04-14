@@ -10,7 +10,6 @@ let computerScore = 0;
 
 btn.forEach((button) => {
     button.addEventListener('click', () => {
-        document.querySelector('#finalResult').textContent = '';
         value = button.value;
         playGame();
     });
