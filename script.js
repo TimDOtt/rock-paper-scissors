@@ -4,7 +4,6 @@ const result = document.querySelector('#result');
 const finalResult = document.querySelector('#finalResult');
 const player = document.querySelector('#playerWins');
 const computer = document.querySelector('#computerWins');
-let value = btn.value;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -74,11 +73,11 @@ function getScore() {
 function getFinalWinner() {
     score = "Score:" + "<br>" + "Player: " + playerScore + "<br>" + "Computer: " + computerScore;
     if (playerScore === 5) {
-        finalResult.textContent = "Player wins! Game has reset."
+        finalResult.textContent = "Player wins! Refresh to play again."
         document.querySelector('#score').innerHTML = score;
         
     } else if (computerScore === 5) {
-        finalResult.textContent = "Computer wins! Game has reset."
+        finalResult.textContent = "Computer wins! Refresh to play again."
         document.querySelector('#score').innerHTML =  score;
     }
 }
