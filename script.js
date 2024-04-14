@@ -56,18 +56,11 @@ function getRoundWinner(player, computer) {
 function getScore() {
     if (result.textContent.includes("You win!")) {
         playerScore++
-        player.textContent = "Player: " + playerScore;
-        computer.textContent = "Computer: " + computerScore;
     } else if (result.textContent.includes("You lose!")) {
         computerScore++
-        player.textContent = "Player: " + playerScore;
-        computer.textContent = "Computer: " + computerScore;
-    }else {
-        player.textContent = "Player: " + playerScore;
-        computer.textContent = "Computer: " + computerScore;
     }
-    
-
+    player.textContent = "Player: " + playerScore;
+    computer.textContent = "Computer: " + computerScore;
 }
 
 function getFinalWinner() {
