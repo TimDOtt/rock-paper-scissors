@@ -70,9 +70,6 @@ function playRound() {
         result.textContent = "It's a tie!!";
     }
 
-    if (playerScore > computerScore) {
-        player.st
-    }
     if (playerScore === 5) {
         score = "Score:" + "<br>" + "Player: " + playerScore + "<br>" + "Computer: " + computerScore;
         finalResult.textContent = "Player wins! Game has reset."
@@ -93,6 +90,7 @@ function playRound() {
     }
 }
 
+// Left commented out below to return and refactor code into smaller functions later on.
 // function playGame() {
 //    let playerScore = 0;
 //    let computerScore = 0;
