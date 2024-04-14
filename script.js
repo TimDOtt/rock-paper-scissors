@@ -32,55 +32,63 @@ function playRound() {
     if (playerSelection === "rock" && computerSelection === "scissors"){
         result.textContent = "You win! Rock beats scissors.";
         playerScore += 1;
-        player.textContent = "Player wins: " + playerScore;
+        player.textContent = "Player: " + playerScore;
+        computer.textContent = "Computer: " + computerScore;
         
     }
     else if (playerSelection === "rock" && computerSelection === "paper"){
         result.textContent = "You lose! Paper beats rock.";
         computerScore += 1;
-        computer.textContent = "Computer wins: " + computerScore;
+        computer.textContent = "Computer: " + computerScore;
+        player.textContent = "Player: " + playerScore;
     }
     else if (playerSelection === "paper" && computerSelection === "scissors"){
         result.textContent = "You lose! Scissors beats paper.";
         computerScore += 1;
-        computer.textContent = "Computer wins: " + computerScore;
+        computer.textContent = "Computer: " + computerScore;
+        player.textContent = "Player: " + playerScore;
         
     }
     else if (playerSelection === "paper" && computerSelection === "rock"){
         result.textContent = "You win! Paper beats rock.";
         playerScore += 1;
-        player.textContent = "Player wins: " + playerScore;
+        player.textContent = "Player: " + playerScore;
     }
     else if (playerSelection === "scissors" && computerSelection === "rock"){
         result.textContent = "You lose! Rock beats scissors.";
         computerScore += 1;
-        computer.textContent = "Computer wins: " + computerScore;
+        computer.textContent = "Computer: " + computerScore;
+        player.textContent = "Player: " + playerScore;
     }
     else if (playerSelection === "scissors" && computerSelection === "paper"){
         result.textContent = "You win! Scissors beats paper.";
         playerScore += 1;
-        player.textContent = "Player wins: " + playerScore;
+        player.textContent = "Player: " + playerScore;
+        
     }
     else {
         result.textContent = "It's a tie!!";
     }
 
+    if (playerScore > computerScore) {
+        player.st
+    }
     if (playerScore === 5) {
-        score = "Score:" + "<br>" + "Player wins: " + playerScore + "<br>" + "Computer wins: " + computerScore;
+        score = "Score:" + "<br>" + "Player: " + playerScore + "<br>" + "Computer: " + computerScore;
         finalResult.textContent = "Player wins! Game has reset."
         document.querySelector('#score').innerHTML = score;
         playerScore = 0;
         computerScore = 0;
-        computer.textContent = "Computer wins: 0";
-        player.textContent = "Player wins: 0";
+        computer.textContent = "Computer: 0";
+        player.textContent = "Player: 0";
     }else if (computerScore === 5) {
-        score = "Score:" + "<br>" + "Player wins: " + playerScore + "<br>" + "Computer wins: " + computerScore;
+        score = "Score:" + "<br>" + "Player: " + playerScore + "<br>" + "Computer: " + computerScore;
         finalResult.textContent = "Computer wins! Game has reset."
         document.querySelector('#score').innerHTML =  score;
         playerScore = 0;
         computerScore = 0;
-        player.textContent = "Player wins: 0";
-        computer.textContent = "Computer wins: 0";
+        player.textContent = "Player: 0";
+        computer.textContent = "Computer: 0";
         
     }
 }
