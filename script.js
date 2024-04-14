@@ -1,11 +1,18 @@
 const CHOICES = ["rock", "paper", "scissors"];
 const btn = document.querySelectorAll('button');
+const result = document.querySelector('#result');
+const finalResult = document.querySelector('#finalResult');
+const player = document.querySelector('#playerWins');
+const computer = document.querySelector('#computerWins');
+
+
 let value = btn.value;
-let playerWins = 0;
-let computerWins = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 btn.forEach((button) => {
     button.addEventListener('click', () => {
+        document.querySelector('#finalResult').textContent = '';
         value = button.value;
         playRound();
     });
@@ -14,96 +21,99 @@ btn.forEach((button) => {
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * CHOICES.length); 
     let computerChoice = CHOICES[choice];
-    console.log("Computer selection is: " + computerChoice);
     return computerChoice;
 }
 
 function playRound() {
     let playerSelection = value;
     let computerSelection = getComputerChoice();
-
-    
+    document.querySelector("#score").innerHTML = '';
 
     if (playerSelection === "rock" && computerSelection === "scissors"){
-        document.querySelector('#result').textContent = "You win! Rock beats scissors.";
-        playerWins += 1;
-        document.querySelector('#playerWins').textContent = "Player wins: " + playerWins;
+        result.textContent = "You win! Rock beats scissors.";
+        playerScore += 1;
+        player.textContent = "Player wins: " + playerScore;
         
     }
     else if (playerSelection === "rock" && computerSelection === "paper"){
-        document.querySelector('#result').textContent = "You lose! Paper beats rock.";
-        computerWins += 1;
-        document.querySelector('#computerWins').textContent = "Computer wins: " + computerWins;
+        result.textContent = "You lose! Paper beats rock.";
+        computerScore += 1;
+        computer.textContent = "Computer wins: " + computerScore;
     }
     else if (playerSelection === "paper" && computerSelection === "scissors"){
-        document.querySelector('#result').textContent = "You lose! Scissors beats paper.";
-        computerWins += 1;
-        document.querySelector('#computerWins').textContent = "Computer wins: " + computerWins;
+        result.textContent = "You lose! Scissors beats paper.";
+        computerScore += 1;
+        computer.textContent = "Computer wins: " + computerScore;
         
     }
     else if (playerSelection === "paper" && computerSelection === "rock"){
-        document.querySelector('#result').textContent = "You win! Paper beats rock.";
-        playerWins += 1;
-        document.querySelector('#playerWins').textContent = "Player wins: " + playerWins;
+        result.textContent = "You win! Paper beats rock.";
+        playerScore += 1;
+        player.textContent = "Player wins: " + playerScore;
     }
     else if (playerSelection === "scissors" && computerSelection === "rock"){
-        document.querySelector('#result').textContent = "You lose! Rock beats scissors.";
-        computerWins += 1;
-        document.querySelector('#computerWins').textContent = "Computer wins: " + computerWins;
+        result.textContent = "You lose! Rock beats scissors.";
+        computerScore += 1;
+        computer.textContent = "Computer wins: " + computerScore;
     }
     else if (playerSelection === "scissors" && computerSelection === "paper"){
-        document.querySelector('#result').textContent = "You win! Scissors beats paper.";
-        playerWins += 1;
-        document.querySelector('#playerWins').textContent = "Player wins: " + playerWins;
+        result.textContent = "You win! Scissors beats paper.";
+        playerScore += 1;
+        player.textContent = "Player wins: " + playerScore;
     }
     else {
-        document.querySelector('#result').textContent = "It's a tie!!";
+        result.textContent = "It's a tie!!";
     }
 
-    if (playerWins === 5) {
-        document.querySelector('#finalResult').textContent = "Player wins! Game has reset.";
-        playerWins = 0;
-        computerWins = 0;
-        document.querySelector('#computerWins').textContent = "Computer wins: 0";
-        document.querySelector('#playerWins').textContent = "Player wins: 0";
-    }else if (computerWins ===5) {
-        document.querySelector('#finalResult').textContent = "Computer wins! Game has reset.";
-        playerWins = 0;
-        computerWins = 0;
-        document.querySelector('#playerWins').textContent = "Player wins: 0";
-        document.querySelector('#computerWins').textContent = "Computer wins: 0";
+    if (playerScore === 5) {
+        score = "Score:" + "<br>" + "Player wins: " + playerScore + "<br>" + "Computer wins: " + computerScore;
+        finalResult.textContent = "Player wins! Game has reset."
+        document.querySelector('#score').innerHTML = score;
+        playerScore = 0;
+        computerScore = 0;
+        computer.textContent = "Computer wins: 0";
+        player.textContent = "Player wins: 0";
+    }else if (computerScore === 5) {
+        score = "Score:" + "<br>" + "Player wins: " + playerScore + "<br>" + "Computer wins: " + computerScore;
+        finalResult.textContent = "Computer wins! Game has reset."
+        document.querySelector('#score').innerHTML =  score;
+        playerScore = 0;
+        computerScore = 0;
+        player.textContent = "Player wins: 0";
+        computer.textContent = "Computer wins: 0";
+        
     }
 }
 
-function playGame() {
-   let playerWins = 0;
-   let computerWins = 0;
+// function playGame() {
+//    let playerScore = 0;
+//    let computerScore = 0;
    
-   for (let i = 0; i <= 4; i++) {
-    let outcome = playRound();
-    if (outcome.includes("You win!")) {
-        ++playerWins;
-        console.log(outcome);
-        console.log("Player victories " + playerWins);
-    }
-    else if (outcome.includes("You lose!")) {
-        ++computerWins;
-        console.log(outcome);
-        console.log("Computer victories " + computerWins);
-    }
-    else {
-        console.log(outcome);
-    }
-   } 
-   if (playerWins > computerWins) {
-    console.log("You win! Refresh to play again.");
-    }
-    else if (computerWins > playerWins){
-    console.log("Computer wins. Refresh to try again.");
-    }
-    else {
-        console.log("It was a draw. Please refresh to try again.");
-    }
-}
+//    for (let i = 0; i <= 4; i++) {
+//     let outcome = playRound();
+//     if (outcome.includes("You win!")) {
+//         ++playerScore;
+//         console.log(outcome);
+//         console.log("Player victories " + playerScore);
+//     }
+//     else if (outcome.includes("You lose!")) {
+//         ++computerScore;
+//         console.log(outcome);
+//         console.log("Computer victories " + computerScore);
+//     }
+//     else {
+//         console.log(outcome);
+//     }
+//    } 
+//    if (playerScore > computerScore) {
+//     console.log("You win! Refresh to play again.");
+//     }
+//     else if (computerScore > playerScore){
+//     console.log("Computer wins. Refresh to try again.");
+//     }
+//     else {
+//         console.log("It was a draw. Please refresh to try again.");
+//     }
+// }
 
 // playGame();
